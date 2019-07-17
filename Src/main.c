@@ -14,9 +14,10 @@ int main(void)
   LED_Init();
   ADC_Init();
   RTC_Init();
-  TIM2_Init();
   MX_USART2_UART_Init();
+	TIM2_Init(1000,24);
 	int i =0;
+	TIM_Set(500);
   while (1)
   {
     printf("hello\r\n");

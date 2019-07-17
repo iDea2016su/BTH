@@ -3,6 +3,7 @@
 #include "main.h"
 
 #define u8 unsigned char
+#define u32 unsigned int
 	
 void SystemClock_Config(void);
 

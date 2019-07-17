@@ -1,57 +1,65 @@
 #include "timer.h"
 
-TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef TIM2_Handler; 
+TIM_OC_InitTypeDef TIM2_CH2Handler;      
 
-void TIM2_Init(void)
+void TIM2_Init(u32 psc,u32 arr)
 {
-
-  /* USER CODE BEGIN TIM2_Init 0 */
-
-  /* USER CODE END TIM2_Init 0 */
-
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-  TIM_OC_InitTypeDef sConfigOC = {0};
-
-  /* USER CODE BEGIN TIM2_Init 1 */
-
-  /* USER CODE END TIM2_Init 1 */
-  htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
-  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 0;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
-  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_TIM_PWM_Init(&htim2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sConfigOC.OCMode = TIM_OCMODE_PWM1;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_PWM_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM2_Init 2 */
-
-  /* USER CODE END TIM2_Init 2 */
-  HAL_TIM_MspPostInit(&htim2);
+    TIM2_Handler.Instance=TIM2;             
+    TIM2_Handler.Init.Prescaler=psc;       
+    TIM2_Handler.Init.CounterMode=TIM_COUNTERMODE_UP; 
+    TIM2_Handler.Init.Period=arr;          
+    TIM2_Handler.Init.ClockDivision=TIM_CLOCKDIVISION_DIV1;
+    HAL_TIM_PWM_Init(&TIM2_Handler);   
+    HAL_TIM_PWM_MspInit(&TIM2_Handler); 	
+    
+    TIM2_CH2Handler.OCMode=TIM_OCMODE_PWM1;  
+    TIM2_CH2Handler.Pulse=arr/2;            
+                                           
+    TIM2_CH2Handler.OCPolarity=TIM_OCPOLARITY_LOW;  
+    HAL_TIM_PWM_ConfigChannel(&TIM2_Handler,&TIM2_CH2Handler,TIM_CHANNEL_2); 
+    HAL_TIM_PWM_Start(&TIM2_Handler,TIM_CHANNEL_2); 
 
 }
+
+
+void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
+{
+    GPIO_InitTypeDef GPIO_Initure;
+	  __HAL_RCC_TIM2_CLK_ENABLE();			 
+    __HAL_RCC_GPIOA_CLK_ENABLE();			 
+	
+    GPIO_Initure.Pin=GPIO_PIN_1;          
+    GPIO_Initure.Mode=GPIO_MODE_AF_PP;  	   
+    GPIO_Initure.Pull=GPIO_PULLUP;         
+    GPIO_Initure.Speed=GPIO_SPEED_FREQ_VERY_HIGH;     
+	  GPIO_Initure.Alternate=GPIO_AF2_TIM2;	 
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
+} 
+
+//void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
+//{
+//    if(htim->Instance==TIM2)
+//	{
+//		__HAL_RCC_TIM2_CLK_ENABLE();            
+//		HAL_NVIC_SetPriority(TIM2_IRQn,1,3);   
+//		HAL_NVIC_EnableIRQ(TIM2_IRQn);         
+//	}  
+//}
+
+void TIM2_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&TIM2_Handler);
+}
+
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if(htim==(&TIM2_Handler))
+    {
+      //  LED1_Toggle;       
+    }
+}
+void TIM_Set(u32 compare)
+{
+    TIM2->CCR2=compare; 
+} 
