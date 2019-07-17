@@ -12,8 +12,8 @@ int main(void)
   HAL_Init();
   SystemClock_Config();
   LED_Init();
-  ADC_Init();
-  RTC_Init();
+  //ADC_Init();
+  //RTC_Init();
   MX_USART2_UART_Init();
 	TIM2_Init(1000,24);
 	int i =0;

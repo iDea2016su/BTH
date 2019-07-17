@@ -3,7 +3,7 @@
 TIM_HandleTypeDef TIM2_Handler; 
 TIM_OC_InitTypeDef TIM2_CH2Handler;      
 
-void TIM2_Init(u32 psc,u32 arr)
+void TIM2_Init(u16 psc,u16 arr)
 {
     TIM2_Handler.Instance=TIM2;             
     TIM2_Handler.Init.Prescaler=psc;       
@@ -11,7 +11,7 @@ void TIM2_Init(u32 psc,u32 arr)
     TIM2_Handler.Init.Period=arr;          
     TIM2_Handler.Init.ClockDivision=TIM_CLOCKDIVISION_DIV1;
     HAL_TIM_PWM_Init(&TIM2_Handler);   
-    HAL_TIM_PWM_MspInit(&TIM2_Handler); 	
+    //HAL_TIM_PWM_MspInit(&TIM2_Handler); 	
     
     TIM2_CH2Handler.OCMode=TIM_OCMODE_PWM1;  
     TIM2_CH2Handler.Pulse=arr/2;            
@@ -47,18 +47,18 @@ void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
 //	}  
 //}
 
-void TIM2_IRQHandler(void)
-{
-    HAL_TIM_IRQHandler(&TIM2_Handler);
-}
+//void TIM2_IRQHandler(void)
+//{
+//    HAL_TIM_IRQHandler(&TIM2_Handler);
+//}
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    if(htim==(&TIM2_Handler))
-    {
-      //  LED1_Toggle;       
-    }
-}
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//    if(htim==(&TIM2_Handler))
+//    {
+//      //  LED1_Toggle;       
+//    }
+//}
 void TIM_Set(u32 compare)
 {
     TIM2->CCR2=compare; 
