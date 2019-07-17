@@ -28,6 +28,9 @@
 "cube\usart.o"
 "cube\led.o"
 "cube\sys.o"
+"cube\adc.o"
+"cube\rtc.o"
+"cube\timer.o"
 --library_type=microlib --strict --scatter "Cube\Cube.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

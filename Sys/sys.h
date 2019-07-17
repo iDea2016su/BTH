@@ -1,5 +1,6 @@
 #ifndef SYS_H
 #define SYS_H
+#include "main.h"
 
 #define u8 unsigned char
 	

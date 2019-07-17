@@ -38,3 +38,6 @@ cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 cube\main.o: ..\Sys\usart.h
 cube\main.o: ..\App\led.h
 cube\main.o: ..\Sys\sys.h
+cube\main.o: ..\App\adc.h
+cube\main.o: ..\App\rtc.h
+cube\main.o: ..\App\timer.h
