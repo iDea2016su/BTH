@@ -2,6 +2,7 @@
 #define _ADC_H
 #include "sys.h"
 
-void ADC_Init();
+u16 getBattery(void);  
+u16 getMotor(void);  
 
 #endif

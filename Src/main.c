@@ -6,6 +6,7 @@
 #include "rtc.h"
 #include "timer.h"
 #include "key.h"
+#include "adc.h"
 
 
 int main(void)
@@ -13,7 +14,7 @@ int main(void)
   HAL_Init();
   SystemClock_Config();
   LED_Init();
-  //ADC_Init();
+  ADC_Init();
   //RTC_Init();
   MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
@@ -22,7 +23,8 @@ int main(void)
 	TIM_Set(500);
   while (1)
   {
-    printf("hello\r\n");
+    printf("Battery %d  %d\r\n",getMotor(),getBattery());
+		//printf("Moto %d\r\n",getMotor());
 		HAL_Delay(500);
 		i++;
 		LED(0,i%2);
