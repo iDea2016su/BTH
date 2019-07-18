@@ -1,5 +1,6 @@
 #include "key.h"
 #include "led.h"
+#include "timer.h"
 
 void KEY_Init(void)
 {
@@ -20,8 +21,21 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == GPIO_PIN_0)
   {
-    printf("key\r\n");
-		HAL_Delay(10);
-		//LED
+		HAL_Delay(5);
+		int i =0;
+    if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_SET)
+		{
+			while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_SET)
+			{
+				i++;
+				HAL_Delay(5);
+				if(i>=400)
+				{
+					TIM_Set(0);
+					break;
+				}
+			}
+			printf("time %d",i*5);
+		}
   } 
 }

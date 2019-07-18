@@ -38,3 +38,4 @@ cube\key.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h
 cube\key.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
 cube\key.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 cube\key.o: ..\App\led.h
+cube\key.o: ..\App\timer.h
