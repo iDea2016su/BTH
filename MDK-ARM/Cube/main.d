@@ -41,3 +41,4 @@ cube\main.o: ..\Sys\sys.h
 cube\main.o: ..\App\adc.h
 cube\main.o: ..\App\rtc.h
 cube\main.o: ..\App\timer.h
+cube\main.o: ..\App\key.h

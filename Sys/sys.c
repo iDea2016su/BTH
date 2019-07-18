@@ -44,6 +44,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+	//HAL_NVIC_EnableIRQ();
 }
 
 void Error_Handler(void)

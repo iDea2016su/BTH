@@ -5,6 +5,7 @@
 #include "adc.h"
 #include "rtc.h"
 #include "timer.h"
+#include "key.h"
 
 
 int main(void)
@@ -16,6 +17,7 @@ int main(void)
   //RTC_Init();
   MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
+	KEY_Init();
 	int i =0;
 	TIM_Set(500);
   while (1)

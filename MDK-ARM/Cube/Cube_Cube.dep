@@ -1,6 +1,6 @@
 Dependencies for Project 'Cube', Target 'Cube': (DO NOT MODIFY !)
 F (startup_stm32l010x4.s)(0x5D2F15CE)(--cpu Cortex-M0+ -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "STM32L010x4 SETA 1"--list startup_stm32l010x4.lst --xref -o cube\startup_stm32l010x4.o --depend cube\startup_stm32l010x4.d)
-F (../Src/main.c)(0x5D3032A6)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\main.o --omf_browse cube\main.crf --depend cube\main.d)
+F (../Src/main.c)(0x5D3035E9)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\main.o --omf_browse cube\main.crf --depend cube\main.d)
 I (../Inc/main.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5D2F15CE)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5D2F15CE)
@@ -42,7 +42,8 @@ I (..\Sys\sys.h)(0x5D301F5C)
 I (..\App\adc.h)(0x5D2F15CD)
 I (..\App\rtc.h)(0x5D2F15CD)
 I (..\App\timer.h)(0x5D301F5C)
-F (../Src/stm32l0xx_it.c)(0x5D2F15CE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\stm32l0xx_it.o --omf_browse cube\stm32l0xx_it.crf --depend cube\stm32l0xx_it.d)
+I (..\App\key.h)(0x5D3035D7)
+F (../Src/stm32l0xx_it.c)(0x5D303D3C)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\stm32l0xx_it.o --omf_browse cube\stm32l0xx_it.crf --depend cube\stm32l0xx_it.d)
 I (../Inc/main.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5D2F15CE)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5D2F15CE)
@@ -78,7 +79,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5D2F15CE)
-I (../Inc/stm32l0xx_it.h)(0x5D2F15CE)
+I (../Inc/stm32l0xx_it.h)(0x5D303D63)
 F (../Src/stm32l0xx_hal_msp.c)(0x5D2F15CE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\stm32l0xx_hal_msp.o --omf_browse cube\stm32l0xx_hal_msp.crf --depend cube\stm32l0xx_hal_msp.d)
 I (../Inc/main.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5D2F15CE)
@@ -924,7 +925,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5D2F15CE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599ECD2C)
-F (..\Sys\sys.c)(0x5D2F15CE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\sys.o --omf_browse cube\sys.crf --depend cube\sys.d)
+F (..\Sys\sys.c)(0x5D3039FE)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\sys.o --omf_browse cube\sys.crf --depend cube\sys.d)
 I (../Inc/main.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5D2F15CE)
 I (../Inc/stm32l0xx_hal_conf.h)(0x5D2F15CE)
@@ -961,7 +962,7 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5D2F15CE)
 I (..\Sys\sys.h)(0x5D301F5C)
-F (..\App\led.c)(0x5D3026E8)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\led.o --omf_browse cube\led.crf --depend cube\led.d)
+F (..\App\led.c)(0x5D303464)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\led.o --omf_browse cube\led.crf --depend cube\led.d)
 I (..\App\led.h)(0x5D2F15CD)
 I (..\Sys\sys.h)(0x5D301F5C)
 I (../Inc/main.h)(0x5D2F15CE)
@@ -1113,8 +1114,8 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5D2F15CE)
 I (..\Sys\sys.h)(0x5D301F5C)
-F (..\App\key.c)(0x5D301F5C)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\key.o --omf_browse cube\key.crf --depend cube\key.d)
-I (..\App\key.h)(0x5D2F4274)
+F (..\App\key.c)(0x5D303D70)(--c99 -c --cpu Cortex-M0+ -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc -I ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32L0xx/Include -I ../Drivers/CMSIS/Include -I ..\Sys -I ..\App-I.\RTE\_Cube-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMSIS\Device\ST\STM32L0xx\Include-D__UVISION_VERSION="527" -D_RTE_ -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4 -DUSE_HAL_DRIVER -DSTM32L010x4-o cube\key.o --omf_browse cube\key.crf --depend cube\key.d)
+I (..\App\key.h)(0x5D3035D7)
 I (..\Sys\sys.h)(0x5D301F5C)
 I (../Inc/main.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h)(0x5D2F15CE)
@@ -1151,3 +1152,4 @@ I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h)(0x5D2F15CE)
 I (../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h)(0x5D2F15CE)
+I (..\App\led.h)(0x5D2F15CD)
