@@ -38,8 +38,6 @@ int main(void)
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
-	int i =0;
-	TIM_Set(500);
   while (1)
   {
 		if((getIn() == 0)&&(getBattery()<=BatLow))

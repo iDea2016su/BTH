@@ -23,7 +23,6 @@ Section Cross References
     main.o(i.main) refers to timer.o(i.TIM2_Init) for TIM2_Init
     main.o(i.main) refers to key.o(i.KEY_Init) for KEY_Init
     main.o(i.main) refers to input.o(i.IN_Init) for IN_Init
-    main.o(i.main) refers to timer.o(i.TIM_Set) for TIM_Set
     main.o(i.main) refers to input.o(i.getIn) for getIn
     main.o(i.main) refers to adc.o(i.getBattery) for getBattery
     main.o(i.main) refers to led.o(i.BatWarn) for BatWarn
@@ -1492,10 +1491,10 @@ Image Symbol Table
     i.ledCharge                              0x08001d28   Section        0  led.o(i.ledCharge)
     i.ledMode                                0x08001d44   Section        0  led.o(i.ledMode)
     i.main                                   0x08001d9a   Section        0  main.o(i.main)
-    i.modeChange                             0x08001e54   Section        0  app.o(i.modeChange)
-    i.sleep                                  0x08001ee8   Section        0  app.o(i.sleep)
-    .constdata                               0x08001f0c   Section       25  system_stm32l0xx.o(.constdata)
-    .constdata                               0x08001f25   Section        8  system_stm32l0xx.o(.constdata)
+    i.modeChange                             0x08001e4c   Section        0  app.o(i.modeChange)
+    i.sleep                                  0x08001ee0   Section        0  app.o(i.sleep)
+    .constdata                               0x08001f04   Section       25  system_stm32l0xx.o(.constdata)
+    .constdata                               0x08001f1d   Section        8  system_stm32l0xx.o(.constdata)
     .data                                    0x20000000   Section        4  stm32l0xx_hal.o(.data)
     .data                                    0x20000004   Section        4  system_stm32l0xx.o(.data)
     .data                                    0x20000008   Section        4  led.o(.data)
@@ -1639,14 +1638,14 @@ Image Symbol Table
     getTick                                  0x08001d1d   Thumb Code     6  app.o(i.getTick)
     ledCharge                                0x08001d29   Thumb Code    24  led.o(i.ledCharge)
     ledMode                                  0x08001d45   Thumb Code    86  led.o(i.ledMode)
-    main                                     0x08001d9b   Thumb Code   186  main.o(i.main)
-    modeChange                               0x08001e55   Thumb Code   142  app.o(i.modeChange)
-    sleep                                    0x08001ee9   Thumb Code    32  app.o(i.sleep)
-    AHBPrescTable                            0x08001f0c   Data          16  system_stm32l0xx.o(.constdata)
-    PLLMulTable                              0x08001f1c   Data           9  system_stm32l0xx.o(.constdata)
-    APBPrescTable                            0x08001f25   Data           8  system_stm32l0xx.o(.constdata)
-    Region$$Table$$Base                      0x08001f30   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08001f50   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08001d9b   Thumb Code   178  main.o(i.main)
+    modeChange                               0x08001e4d   Thumb Code   142  app.o(i.modeChange)
+    sleep                                    0x08001ee1   Thumb Code    32  app.o(i.sleep)
+    AHBPrescTable                            0x08001f04   Data          16  system_stm32l0xx.o(.constdata)
+    PLLMulTable                              0x08001f14   Data           9  system_stm32l0xx.o(.constdata)
+    APBPrescTable                            0x08001f1d   Data           8  system_stm32l0xx.o(.constdata)
+    Region$$Table$$Base                      0x08001f28   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08001f48   Number         0  anon$$obj.o(Region$$Table)
     uwTick                                   0x20000000   Data           4  stm32l0xx_hal.o(.data)
     SystemCoreClock                          0x20000004   Data           4  system_stm32l0xx.o(.data)
     appState                                 0x2000000c   Data           1  app.o(.data)
@@ -1667,9 +1666,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000c1
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001f68, Max: 0x00004000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00001f60, Max: 0x00004000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001f50, Max: 0x00004000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00001f48, Max: 0x00004000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1774,23 +1773,23 @@ Memory Map of the image
     0x08001d1c   0x08001d1c   0x0000000c   Code   RO         3742    i.getTick           app.o
     0x08001d28   0x08001d28   0x0000001c   Code   RO         3550    i.ledCharge         led.o
     0x08001d44   0x08001d44   0x00000056   Code   RO         3551    i.ledMode           led.o
-    0x08001d9a   0x08001d9a   0x000000ba   Code   RO           12    i.main              main.o
-    0x08001e54   0x08001e54   0x00000094   Code   RO         3743    i.modeChange        app.o
-    0x08001ee8   0x08001ee8   0x00000024   Code   RO         3744    i.sleep             app.o
-    0x08001f0c   0x08001f0c   0x00000019   Data   RO         3443    .constdata          system_stm32l0xx.o
-    0x08001f25   0x08001f25   0x00000008   Data   RO         3444    .constdata          system_stm32l0xx.o
-    0x08001f2d   0x08001f2d   0x00000003   PAD
-    0x08001f30   0x08001f30   0x00000020   Data   RO         3824    Region$$Table       anon$$obj.o
+    0x08001d9a   0x08001d9a   0x000000b2   Code   RO           12    i.main              main.o
+    0x08001e4c   0x08001e4c   0x00000094   Code   RO         3743    i.modeChange        app.o
+    0x08001ee0   0x08001ee0   0x00000024   Code   RO         3744    i.sleep             app.o
+    0x08001f04   0x08001f04   0x00000019   Data   RO         3443    .constdata          system_stm32l0xx.o
+    0x08001f1d   0x08001f1d   0x00000008   Data   RO         3444    .constdata          system_stm32l0xx.o
+    0x08001f25   0x08001f25   0x00000003   PAD
+    0x08001f28   0x08001f28   0x00000020   Data   RO         3824    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001f50, Size: 0x00000530, Max: 0x00000800, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08001f48, Size: 0x00000530, Max: 0x00000800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08001f50   0x00000004   Data   RW         2010    .data               stm32l0xx_hal.o
-    0x20000004   0x08001f54   0x00000004   Data   RW         3445    .data               system_stm32l0xx.o
-    0x20000008   0x08001f58   0x00000004   Data   RW         3552    .data               led.o
-    0x2000000c   0x08001f5c   0x0000000c   Data   RW         3745    .data               app.o
+    0x20000000   0x08001f48   0x00000004   Data   RW         2010    .data               stm32l0xx_hal.o
+    0x20000004   0x08001f4c   0x00000004   Data   RW         3445    .data               system_stm32l0xx.o
+    0x20000008   0x08001f50   0x00000004   Data   RW         3552    .data               led.o
+    0x2000000c   0x08001f54   0x0000000c   Data   RW         3745    .data               app.o
     0x20000018        -       0x00000080   Zero   RW         3479    .bss                usart.o
     0x20000098        -       0x0000005c   Zero   RW         3595    .bss                adc.o
     0x200000f4        -       0x0000003c   Zero   RW         3653    .bss                timer.o
@@ -1809,7 +1808,7 @@ Image component sizes
         84         12          0          0          0       1166   input.o
        152          8          0          0          0       1404   key.o
        270         24          0          4          0       2355   led.o
-       186          0          0          0          0     312763   main.o
+       178          0          0          0          0     312755   main.o
         88         38        192          0       1024        628   startup_stm32l010x4.o
        144         20          0          4          0       3607   stm32l0xx_hal.o
        986         38          0          0          0       5294   stm32l0xx_hal_adc.o
@@ -1828,7 +1827,7 @@ Image component sizes
         56          8          0          0        128       2247   usart.o
 
     ----------------------------------------------------------------------
-      7424        504        260         24       1304     376288   Object Totals
+      7416        504        260         24       1304     376280   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         12          0          3          0          0          0   (incl. Padding)
 
@@ -1872,15 +1871,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      7756        520        260         24       1304     373600   Grand Totals
-      7756        520        260         24       1304     373600   ELF Image Totals
-      7756        520        260         24          0          0   ROM Totals
+      7748        520        260         24       1304     373592   Grand Totals
+      7748        520        260         24       1304     373592   ELF Image Totals
+      7748        520        260         24          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 8016 (   7.83kB)
+    Total RO  Size (Code + RO Data)                 8008 (   7.82kB)
     Total RW  Size (RW Data + ZI Data)              1328 (   1.30kB)
-    Total ROM Size (Code + RO Data + RW Data)       8040 (   7.85kB)
+    Total ROM Size (Code + RO Data + RW Data)       8032 (   7.84kB)
 
 ==============================================================================
 
