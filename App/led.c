@@ -1,6 +1,8 @@
 #include "led.h"
 #include "main.h"
 
+
+
 void LED_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -88,4 +90,28 @@ void LED(u8 led,u8 status)
 			break;
 		default: break;
 	}
+}
+
+void ledMode(u8 s1,u8 s2,u8 s3,u8 s4)
+{
+	if(s1) HAL_GPIO_WritePin(GPIOA,GPIO_PIN_2,GPIO_PIN_SET);
+	else   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_2,GPIO_PIN_RESET);
+	if(s2) HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_SET);
+	else   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_5,GPIO_PIN_RESET);
+	if(s3) HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_SET);
+	else   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_6,GPIO_PIN_RESET);
+	if(s4) HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET);
+	else   HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
+}
+void ledCharge(u8 s)
+{
+  if(s)  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+	else   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+}
+void BatWarn()
+{
+	static long count =0;
+	count++;
+	if(count%2) HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+	else        HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
 }

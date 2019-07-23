@@ -1,6 +1,7 @@
 #include "key.h"
 #include "led.h"
 #include "timer.h"
+#include "app.h"
 
 void KEY_Init(void)
 {
@@ -29,13 +30,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			{
 				i++;
 				HAL_Delay(5);
-				if(i>=400)
+				if(i>=200)
 				{
-					TIM_Set(0);
 					break;
 				}
 			}
-			printf("time %d",i*5);
+			if(i<400)
+			{
+				modeChange();
+			}
+			else
+			{
+				sleep();
+			}
 		}
   } 
 }

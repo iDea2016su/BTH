@@ -33,6 +33,7 @@
 "cube\timer.o"
 "cube\key.o"
 "cube\input.o"
+"cube\app.o"
 --library_type=microlib --strict --scatter "Cube\Cube.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

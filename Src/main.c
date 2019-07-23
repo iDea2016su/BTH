@@ -8,7 +8,24 @@
 #include "key.h"
 #include "adc.h"
 #include "input.h"
+#include "app.h"
 
+#define BatLow 1000
+#define MotoHigh 1000
+#define Dura 200
+#define CloseTime (1000/Dura)*60*2
+
+#define P1S (1000/Dura)*30
+#define P1D (1000/Dura)*31
+
+#define P2S (1000/Dura)*60
+#define P2D (1000/Dura)*61
+
+#define P3S (1000/Dura)*90
+#define P3D (1000/Dura)*91
+
+#define P4S (1000/Dura)*120
+#define P4D (1000/Dura)*121
 
 int main(void)
 {
@@ -24,14 +41,49 @@ int main(void)
 	TIM_Set(500);
   while (1)
   {
-    printf("Battery %d  %d, %d\r\n",getMotor(),getBattery(),getIn());
-		//printf("Moto %d\r\n",getMotor());
-		HAL_Delay(500);
-		i++;
-		LED(0,i%2);
-		LED(1,i%2);
-		LED(2,i%2);
-		LED(3,i%2);
-		LED(4,i%2);
+		if((getIn() == 0)&&(getBattery()<=BatLow))
+		{
+			BatWarn();
+		}
+		else if(getIn())
+		{
+			ledCharge(1);
+			sleep();
+		}
+		if(getMotor()>MotoHigh)
+		{
+			sleep();
+		}
+		HAL_Delay(Dura);
+		Tick();
+    long time = getTick();
+		if((time>=P1S)&&(time<=P1D))
+		{
+			appPause();
+		}
+		else if((time>=P1D)&&(time<=P2S))
+		{
+			appContuine();
+		}
+		else if((time>=P2S)&&(time<=P2D))
+		{
+			appPause();
+		}
+		else if((time>=P2D)&&(time<=P3S))
+		{
+			appContuine();
+		}
+		else if((time>=P3S)&&(time<=P3D))
+		{
+			appPause();
+		}
+		else if((time>=P3D)&&(time<=P4S))
+		{
+			appContuine();
+		} else if(time>P4S)
+		{
+			sleep();
+		}
+		
   }
 }

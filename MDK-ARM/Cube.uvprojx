@@ -577,6 +577,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\input.c</FilePath>
             </File>
+            <File>
+              <FileName>app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
