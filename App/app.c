@@ -3,10 +3,10 @@
 #include "led.h"
 
 
-#define PM1 800
-#define PM2 600
-#define PM3 500
-#define PM4 400
+#define PM1 750
+#define PM2 860
+#define PM3 998
+#define PM4 998
 #define PMP 0
 
 

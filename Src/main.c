@@ -10,7 +10,7 @@
 #include "input.h"
 #include "app.h"
 
-#define BatLow 1000
+#define BatLow 5867
 #define MotoHigh 1000
 #define Dura 500
 #define CloseTime (1000/Dura)*60*2
@@ -40,9 +40,12 @@ int main(void)
 	IN_Init();
   while (1)
   {
-		printf("Bta %d\r\n",getBattery());
-		if((getIn() == 0))
+		u16 b = getBattery();
+		printf("Bta %d\r\n",b);
+		printf("In %d\r\n",getIn());
+		if((getIn() == 0)&&b<BatLow)
 		{
+			if(getOnOff()==0)
 			BatWarn();
 		}
 		else if(getIn()==1)

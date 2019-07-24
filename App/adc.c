@@ -1,4 +1,5 @@
 #include "adc.h"
+#include "filter.h"
 
 ADC_HandleTypeDef hadc;
 
@@ -69,7 +70,8 @@ u16 getBattery()
 	HAL_ADC_Start(&hadc);                               //开启ADC
 	HAL_ADC_PollForConversion(&hadc,20);                //轮询转换
 	HAL_Delay(10);
-	return (u16)HAL_ADC_GetValue(&hadc);	            //返回最近一次ADC1规则组的转换结果
+	return (u16)filter((u16)HAL_ADC_GetValue(&hadc));	            //返回最近一次ADC1规则组的转换结果
+	//return (u16)HAL_ADC_GetValue(&hadc);
 }
 
 u16 getMotor()   
