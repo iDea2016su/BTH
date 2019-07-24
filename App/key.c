@@ -10,8 +10,8 @@ void KEY_Init(void)
 	
 	  /*Configure GPIO pin : PA0 */
   GPIO_InitStruct.Pin = GPIO_PIN_0;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 	
   HAL_NVIC_SetPriority(EXTI0_1_IRQn, 2, 0);
@@ -24,9 +24,9 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   {
 		HAL_Delay(5);
 		int i =0;
-    if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_SET)
+    if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET)
 		{
-			while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_SET)
+			while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET)
 			{
 				i++;
 				HAL_Delay(5);
@@ -35,7 +35,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 					break;
 				}
 			}
-			if(i<400)
+			if(i<200)
 			{
 				modeChange();
 			}

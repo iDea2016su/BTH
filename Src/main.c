@@ -12,7 +12,7 @@
 
 #define BatLow 1000
 #define MotoHigh 1000
-#define Dura 200
+#define Dura 500
 #define CloseTime (1000/Dura)*60*2
 
 #define P1S (1000/Dura)*30
@@ -40,46 +40,56 @@ int main(void)
 	IN_Init();
   while (1)
   {
-		if((getIn() == 0)&&(getBattery()<=BatLow))
+		printf("Bta %d\r\n",getBattery());
+		if((getIn() == 0))
 		{
 			BatWarn();
 		}
-		else if(getIn())
+		else if(getIn()==1)
 		{
 			ledCharge(1);
 			sleep();
 		}
-		if(getMotor()>MotoHigh)
+		else
 		{
-			sleep();
+			ledCharge(0);
 		}
+		
+//		if(getMotor()>MotoHigh)
+//		{
+//			//sleep();
+//		}
 		HAL_Delay(Dura);
 		Tick();
     long time = getTick();
-		if((time>=P1S)&&(time<=P1D))
+		if(ifMode4()==0)
 		{
-			appPause();
-		}
-		else if((time>=P1D)&&(time<=P2S))
-		{
-			appContuine();
-		}
-		else if((time>=P2S)&&(time<=P2D))
-		{
-			appPause();
-		}
-		else if((time>=P2D)&&(time<=P3S))
-		{
-			appContuine();
-		}
-		else if((time>=P3S)&&(time<=P3D))
-		{
-			appPause();
-		}
-		else if((time>=P3D)&&(time<=P4S))
-		{
-			appContuine();
-		} else if(time>P4S)
+			if((time>=P1S)&&(time<=P1D))
+			{
+				appPause();
+			}
+			else if((time>=P1D)&&(time<=P2S))
+			{
+				appContuine();
+			}
+			else if((time>=P2S)&&(time<=P2D))
+			{
+				appPause();
+			}
+			else if((time>=P2D)&&(time<=P3S))
+			{
+				appContuine();
+			}
+			else if((time>=P3S)&&(time<=P3D))
+			{
+				appPause();
+			}
+			else if((time>=P3D)&&(time<=P4S))
+			{
+				appContuine();
+			} 
+	  }
+		if(time>P4S)
 		{
 			sleep();
 		}

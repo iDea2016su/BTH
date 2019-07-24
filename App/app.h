@@ -12,4 +12,5 @@ void Tick();
 long getTick();
 void clearTick();
 void sleep();
+u8 ifMode4();
 #endif

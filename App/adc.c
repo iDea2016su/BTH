@@ -4,8 +4,7 @@ ADC_HandleTypeDef hadc;
 
 void ADC_Init(void)
 {
-
-  /* USER CODE BEGIN ADC_Init 0 */
+ /* USER CODE BEGIN ADC_Init 0 */
 
   /* USER CODE END ADC_Init 0 */
 
@@ -16,7 +15,7 @@ void ADC_Init(void)
   /* USER CODE END ADC_Init 1 */
   /** Configure the global features of the ADC (Clock, Resolution, Data Alignment and number of conversion) 
   */
- hadc.Instance = ADC1;
+  hadc.Instance = ADC1;
   hadc.Init.OversamplingMode = ENABLE;
   hadc.Init.Oversample.Ratio = ADC_OVERSAMPLING_RATIO_2;
   hadc.Init.Oversample.RightBitShift = ADC_RIGHTBITSHIFT_NONE;
@@ -33,7 +32,7 @@ void ADC_Init(void)
   hadc.Init.DMAContinuousRequests = DISABLE;
   hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
   hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-  hadc.Init.LowPowerAutoWait = ENABLE;
+  hadc.Init.LowPowerAutoWait = DISABLE;
   hadc.Init.LowPowerFrequencyMode = DISABLE;
   hadc.Init.LowPowerAutoPowerOff = DISABLE;
   if (HAL_ADC_Init(&hadc) != HAL_OK)
@@ -64,7 +63,7 @@ void ADC_Init(void)
 u16 getBattery()   
 {
 	ADC_ChannelConfTypeDef ADC1_ChanConf;
-	ADC1_ChanConf.Channel=ADC_CHANNEL_3;                                  
+	ADC1_ChanConf.Channel=ADC_CHANNEL_4;                                  
 	ADC1_ChanConf.Rank=ADC_RANK_CHANNEL_NUMBER;   	
 	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
 	HAL_ADC_Start(&hadc);                               //开启ADC
@@ -76,7 +75,7 @@ u16 getBattery()
 u16 getMotor()   
 {
 	ADC_ChannelConfTypeDef ADC1_ChanConf;
-	ADC1_ChanConf.Channel=ADC_CHANNEL_4;                                  
+	ADC1_ChanConf.Channel=ADC_CHANNEL_3;                                  
 	ADC1_ChanConf.Rank=ADC_RANK_CHANNEL_NUMBER;   	
 	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
 	HAL_ADC_Start(&hadc);                               //开启ADC

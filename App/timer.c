@@ -43,6 +43,7 @@ void TIM2_Init(u16 psc,u16 arr)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);  
   /* USER CODE END TIM2_Init 2 */
   HAL_TIM_MspPostInit(&htim2);
+	TIM_Set(0);
 }
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
 {
