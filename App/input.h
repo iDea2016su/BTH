@@ -4,5 +4,6 @@
 
 void IN_Init(void);
 u8 getIn(void);
+u8 getChargeFinish();
 	
 #endif

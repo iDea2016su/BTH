@@ -42,18 +42,25 @@ int main(void)
   {
 		u16 b = getBattery();
 		printf("Bta %d\r\n",b);
-		printf("In %d\r\n",getIn());
+		printf("In %d Char %d\r\n",getIn(),getChargeFinish());
 		if((getIn() == 0)&&b<BatLow)
 		{
 			if(getOnOff()==0)
 			BatWarn();
 		}
-		else if(getIn()==1)
+	  if(getIn()==1)
 		{
-			ledCharge(1);
+			if(getChargeFinish()==0)
+			{
+				ledCharge(0);
+			}
+			else
+			{
+			  ledCharge(1);
+			}
 			sleep();
 		}
-		else
+		if((getIn() == 0))
 		{
 			ledCharge(0);
 		}

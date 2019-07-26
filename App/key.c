@@ -2,6 +2,7 @@
 #include "led.h"
 #include "timer.h"
 #include "app.h"
+#include "input.h"
 
 void KEY_Init(void)
 {
@@ -37,6 +38,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			}
 			if(i<200)
 			{
+				if(getIn()==0)
 				modeChange();
 			}
 			else
