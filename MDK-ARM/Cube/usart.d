@@ -29,6 +29,7 @@ cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h
+cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_iwdg.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc.h
@@ -37,4 +38,5 @@ cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
 cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
+cube\usart.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_wwdg.h
 cube\usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

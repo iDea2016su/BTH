@@ -9,6 +9,7 @@
 #include "adc.h"
 #include "input.h"
 #include "app.h"
+#include "dog.h"
 
 #define BatLow 5867
 #define MotoHigh 1000
@@ -38,8 +39,13 @@ int main(void)
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
+  //MX_IWDG_Init();
+	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
+  //MX_WWDG_Init();
+	
   while (1)
   {
+		feedDog();
 		u16 b = getBattery();
 		printf("Bta %d\r\n",b);
 		printf("In %d Char %d\r\n",getIn(),getChargeFinish());

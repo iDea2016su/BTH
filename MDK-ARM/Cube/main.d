@@ -27,6 +27,7 @@ cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ex.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_flash_ramfunc.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_i2c_ex.h
+cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_iwdg.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc.h
@@ -35,6 +36,7 @@ cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_tim_ex.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
 cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
+cube\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_wwdg.h
 cube\main.o: ..\Sys\usart.h
 cube\main.o: ..\App\led.h
 cube\main.o: ..\Sys\sys.h
@@ -44,3 +46,4 @@ cube\main.o: ..\App\timer.h
 cube\main.o: ..\App\key.h
 cube\main.o: ..\App\input.h
 cube\main.o: ..\App\app.h
+cube\main.o: ..\Sys\dog.h

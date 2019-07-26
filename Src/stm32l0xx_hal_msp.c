@@ -324,3 +324,21 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* huart)
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
+void HAL_WWDG_MspInit(WWDG_HandleTypeDef* hwwdg)
+{
+  if(hwwdg->Instance==WWDG)
+  {
+  /* USER CODE BEGIN WWDG_MspInit 0 */
+
+  /* USER CODE END WWDG_MspInit 0 */
+    /* Peripheral clock enable */
+    __HAL_RCC_WWDG_CLK_ENABLE();
+    /* WWDG interrupt Init */
+    HAL_NVIC_SetPriority(WWDG_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(WWDG_IRQn);
+  /* USER CODE BEGIN WWDG_MspInit 1 */
+
+  /* USER CODE END WWDG_MspInit 1 */
+  }
+
+}
