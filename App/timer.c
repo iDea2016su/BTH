@@ -1,6 +1,7 @@
 #include "timer.h"
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim21;
 TIM_OC_InitTypeDef TIM2_CH2Handler;      
 
 void TIM2_Init(u16 psc,u16 arr)
@@ -64,3 +65,46 @@ void TIM_Set(u32 compare)
     //HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);  
 	
 } 
+
+void MX_TIM21_Init(void)
+{
+
+  /* USER CODE BEGIN TIM21_Init 0 */
+
+  /* USER CODE END TIM21_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM21_Init 1 */
+
+  /* USER CODE END TIM21_Init 1 */
+  htim21.Instance = TIM21;
+  htim21.Init.Prescaler = 2399;
+  htim21.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim21.Init.Period = 4999;
+  htim21.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim21.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim21) != HAL_OK)
+  {
+    Error_Handler();
+
+  /* USER CODE END TIM21_Init 2 */
+	}
+	HAL_TIM_Base_Start_IT(&htim21);
+}
+
+//定时器3中断服务函数
+void TIM3_IRQHandler(void)
+{
+    HAL_TIM_IRQHandler(&htim21);
+}
+
+//定时器3中断服务函数调用
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+    if(htim==(&htim21))
+    {
+        printf("timer\r\n");
+    }
+}

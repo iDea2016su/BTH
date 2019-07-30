@@ -166,3 +166,14 @@ void WWDG_IRQHandler(void)
 
   /* USER CODE END WWDG_IRQn 1 */
 }
+extern TIM_HandleTypeDef htim21;
+void TIM21_IRQHandler(void)
+{
+  /* USER CODE BEGIN TIM21_IRQn 0 */
+
+  /* USER CODE END TIM21_IRQn 0 */
+  HAL_TIM_IRQHandler(&htim21);
+  /* USER CODE BEGIN TIM21_IRQn 1 */
+
+  /* USER CODE END TIM21_IRQn 1 */
+}

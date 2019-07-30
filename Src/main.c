@@ -39,10 +39,12 @@ int main(void)
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
+	__HAL_RCC_PWR_CLK_ENABLE();
   //MX_IWDG_Init();
 	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
   //MX_WWDG_Init();
-	
+	//MX_TIM21_Init();
+
   while (1)
   {
 		feedDog();

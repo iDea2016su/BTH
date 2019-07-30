@@ -205,7 +205,21 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef* htim_base)
 
   /* USER CODE END TIM2_MspInit 1 */
   }
+  if(htim_base->Instance==TIM21)
+  {
+  /* USER CODE BEGIN TIM21_MspDeInit 0 */
 
+  /* USER CODE END TIM21_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_TIM21_CLK_ENABLE();
+
+    /* TIM21 interrupt DeInit */
+		HAL_NVIC_SetPriority(TIM21_IRQn,1,3);
+		HAL_NVIC_EnableIRQ(TIM21_IRQn);
+  /* USER CODE BEGIN TIM21_MspDeInit 1 */
+
+  /* USER CODE END TIM21_MspDeInit 1 */
+  }
 }
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef* htim)
@@ -252,6 +266,21 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* htim_base)
   /* USER CODE BEGIN TIM2_MspDeInit 1 */
 
   /* USER CODE END TIM2_MspDeInit 1 */
+  }
+	  if(htim_base->Instance==TIM21)
+  {
+  /* USER CODE BEGIN TIM21_MspDeInit 0 */
+
+  /* USER CODE END TIM21_MspDeInit 0 */
+    /* Peripheral clock disable */
+    __HAL_RCC_TIM21_CLK_ENABLE();
+
+    /* TIM21 interrupt DeInit */
+		HAL_NVIC_SetPriority(TIM21_IRQn,1,3);
+		HAL_NVIC_EnableIRQ(TIM21_IRQn);
+  /* USER CODE BEGIN TIM21_MspDeInit 1 */
+
+  /* USER CODE END TIM21_MspDeInit 1 */
   }
 
 }
