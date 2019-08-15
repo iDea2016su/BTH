@@ -52,7 +52,8 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern TIM_HandleTypeDef htim21;
+extern WWDG_HandleTypeDef hwwdg;
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
@@ -155,7 +156,6 @@ void EXTI0_1_IRQHandler(void)
 /* USER CODE END 1 */
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
-extern WWDG_HandleTypeDef hwwdg;
 void WWDG_IRQHandler(void)
 {
   /* USER CODE BEGIN WWDG_IRQn 0 */
@@ -166,7 +166,6 @@ void WWDG_IRQHandler(void)
 
   /* USER CODE END WWDG_IRQn 1 */
 }
-extern TIM_HandleTypeDef htim21;
 void TIM21_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM21_IRQn 0 */

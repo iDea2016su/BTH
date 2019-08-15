@@ -14,4 +14,5 @@ void clearTick();
 void sleep();
 u8 ifMode4();
 u8 getOnOff();
+u8 checkMoto(int v);
 #endif

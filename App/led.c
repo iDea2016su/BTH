@@ -78,16 +78,16 @@ void LED(u8 led,u8 status)
 				HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
 			}
 			break;
-		case 4:
-			if(status)
-			{
-				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
-			}
-			else
-			{
-				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
-			}
-			break;
+//		case 4:
+//			if(status)
+//			{
+//				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+//			}
+//			else
+//			{
+//				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+//			}
+//			break;
 		default: break;
 	}
 }
@@ -103,15 +103,20 @@ void ledMode(u8 s1,u8 s2,u8 s3,u8 s4)
 	if(s4==1) 		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_SET);
 	else   		HAL_GPIO_WritePin(GPIOA,GPIO_PIN_7,GPIO_PIN_RESET);
 }
-void ledCharge(u8 s)
+void ledChargeOff()
 {
-  if(s==1)  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
-	else   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+   HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
 }
 void BatWarn()
 {
 	static long count =0;
 	count++;
-	if(count%2) HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
-	else        HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+	if(count%2==0) 
+	{
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_SET);
+	}
+	else        
+	{
+		HAL_GPIO_WritePin(GPIOB,GPIO_PIN_1,GPIO_PIN_RESET);
+	}
 }

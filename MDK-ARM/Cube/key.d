@@ -43,3 +43,4 @@ cube\key.o: ..\App\led.h
 cube\key.o: ..\App\timer.h
 cube\key.o: ..\App\app.h
 cube\key.o: ..\App\input.h
+cube\key.o: ..\Sys\dog.h

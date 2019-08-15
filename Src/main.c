@@ -11,22 +11,22 @@
 #include "app.h"
 #include "dog.h"
 
-#define BatLow 5867
+#define BatLow 3600
 #define MotoHigh 1000
 #define Dura 500
 #define CloseTime (1000/Dura)*60*2
 
-#define P1S (1000/Dura)*30
-#define P1D (1000/Dura)*31
+#define P1S (1000/Dura)*29
+#define P1D (1000/Dura)*30
 
-#define P2S (1000/Dura)*60
-#define P2D (1000/Dura)*61
+#define P2S (1000/Dura)*59
+#define P2D (1000/Dura)*60
 
-#define P3S (1000/Dura)*90
-#define P3D (1000/Dura)*91
+#define P3S (1000/Dura)*89
+#define P3D (1000/Dura)*90
 
-#define P4S (1000/Dura)*120
-#define P4D (1000/Dura)*121
+#define P4S (1000/Dura)*119
+#define P4D (1000/Dura)*120
 
 
 int main(void)
@@ -40,44 +40,38 @@ int main(void)
 	KEY_Init();
 	IN_Init();
 	__HAL_RCC_PWR_CLK_ENABLE();
-  //MX_IWDG_Init();
+ 
 	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
-  //MX_WWDG_Init();
+	feedDog();
+	MX_IWDG_Init();
 	//MX_TIM21_Init();
 
   while (1)
   {
 		feedDog();
+		int mspeed = getMotor();
+	  HAL_Delay(250);
 		u16 b = getBattery();
-		printf("Bta %d\r\n",b);
-		printf("In %d Char %d\r\n",getIn(),getChargeFinish());
-		if((getIn() == 0)&&b<BatLow)
+		int charge = getIn();
+		int status = getOnOff();		
+		//printf("charge %d Bat %d Status %d speed %d\r\n",charge,b,status,mspeed);
+		if((charge == 0)&&b<BatLow)
 		{
-			if(getOnOff()==0)
-			BatWarn();
+			if(status==0)
+			{
+				BatWarn();
+			}
 		}
 	  if(getIn()==1)
 		{
-			if(getChargeFinish()==0)
-			{
-				ledCharge(0);
-			}
-			else
-			{
-			  ledCharge(1);
-			}
 			sleep();
 		}
-		if((getIn() == 0))
+		if(checkMoto(mspeed))
 		{
-			ledCharge(0);
+			sleep();
 		}
 		
-//		if(getMotor()>MotoHigh)
-//		{
-//			//sleep();
-//		}
-		HAL_Delay(Dura);
+		HAL_Delay(Dura-250);
 		Tick();
     long time = getTick();
 		if(ifMode4()==0)
@@ -111,6 +105,5 @@ int main(void)
 		{
 			sleep();
 		}
-		
   }
 }

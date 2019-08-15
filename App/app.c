@@ -3,7 +3,7 @@
 #include "led.h"
 
 
-#define PM1 750
+#define PM1 800
 #define PM2 860
 #define PM3 998
 #define PM4 998
@@ -91,6 +91,7 @@ void sleep()
 	ifRun = 0;
 	TIM_Set(PMP);
 	ledMode(0,0,0,0);
+	ledChargeOff();
 	printf("sleep\r\n");
 	ifSleep = 1;
 }
@@ -108,4 +109,17 @@ u8 ifMode4()
 u8 getOnOff()
 {
 	return ifSleep;
+}
+u8 checkMoto(int v)
+{
+	u8 s = 0;
+	switch(modeCount%4)
+	{
+		case 0: if(v>250&&v<3000)s = 1;break;
+		case 1: if(v>250&&v<3000)s = 1;break;
+		case 2: if(v>250&&v<3000)s = 1;break;
+		case 3: if(v>250&&v<3000)s = 1;break;
+		default:break;
+	}
+	return s;
 }

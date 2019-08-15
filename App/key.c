@@ -3,6 +3,7 @@
 #include "timer.h"
 #include "app.h"
 #include "input.h"
+#include "dog.h"
 
 void KEY_Init(void)
 {
@@ -31,6 +32,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			{
 				i++;
 				HAL_Delay(5);
+				feedDog();
 				if(i>=200)
 				{
 					break;
