@@ -3,7 +3,7 @@
 #include "led.h"
 
 
-#define PM1 800
+#define PM1 750
 #define PM2 860
 #define PM3 998
 #define PM4 998
@@ -36,10 +36,10 @@ void modeChange()
 		modeCount++;
 		switch(modeCount%4)
 		{
-			case 0: appState = APP_MODE1;TIM_Set(PM1);ledMode(1,0,0,0);break;
-			case 1: appState = APP_MODE2;TIM_Set(PM2);ledMode(0,1,0,0);break;
-			case 2: appState = APP_MODE3;TIM_Set(PM3);ledMode(0,0,1,0);break;
-			case 3: appState = APP_MODE4;TIM_Set(PM4);ledMode(0,0,0,1);break;
+			case 0: ledMode(1,0,0,0);TIM_Set(PM1/20);HAL_Delay(20);TIM_Set(PM1/10);HAL_Delay(20);TIM_Set(PM1/5);HAL_Delay(10);TIM_Set(PM1/2);HAL_Delay(10);TIM_Set(PM1);break;
+			case 1: ledMode(0,1,0,0);TIM_Set(PM2/20);HAL_Delay(20);TIM_Set(PM2/10);HAL_Delay(20);TIM_Set(PM2/5);HAL_Delay(10);TIM_Set(PM2/2);HAL_Delay(10);TIM_Set(PM2);break;
+			case 2: ledMode(0,0,1,0);TIM_Set(PM3/20);HAL_Delay(20);TIM_Set(PM3/10);HAL_Delay(20);TIM_Set(PM3/5);HAL_Delay(10);TIM_Set(PM3/2);HAL_Delay(10);TIM_Set(PM3);break;
+			case 3: ledMode(0,0,0,1);TIM_Set(PM4/20);HAL_Delay(20);TIM_Set(PM4/10);HAL_Delay(20);TIM_Set(PM4/5);HAL_Delay(10);TIM_Set(PM4/2);HAL_Delay(10);TIM_Set(PM4);break;
 			default:break;
 		}
 	}
@@ -64,10 +64,10 @@ void appContuine()
 {
 	switch(modeCount%4)
 	{
-		case 0: TIM_Set(PM1);ledMode(1,0,0,0);break;
-		case 1: TIM_Set(PM2);ledMode(0,1,0,0);break;
-		case 2: TIM_Set(PM3);ledMode(0,0,1,0);break;
-		case 3: TIM_Set(PM4);ledMode(0,0,0,1);break;
+		case 0: ledMode(1,0,0,0);TIM_Set(PM1/20);HAL_Delay(20);TIM_Set(PM1/10);HAL_Delay(20);TIM_Set(PM1/5);HAL_Delay(10);TIM_Set(PM1/2);HAL_Delay(10);TIM_Set(PM1);break;
+		case 1: ledMode(0,1,0,0);TIM_Set(PM2/20);HAL_Delay(20);TIM_Set(PM2/10);HAL_Delay(20);TIM_Set(PM2/5);HAL_Delay(10);TIM_Set(PM2/2);HAL_Delay(10);TIM_Set(PM2);break;
+		case 2: ledMode(0,0,1,0);TIM_Set(PM3/20);HAL_Delay(20);TIM_Set(PM3/10);HAL_Delay(20);TIM_Set(PM3/5);HAL_Delay(10);TIM_Set(PM3/2);HAL_Delay(10);TIM_Set(PM3);break;
+		case 3: ledMode(0,0,0,1);TIM_Set(PM4/20);HAL_Delay(20);TIM_Set(PM4/10);HAL_Delay(20);TIM_Set(PM4/5);HAL_Delay(10);TIM_Set(PM4/2);HAL_Delay(10);TIM_Set(PM4);break;
 		default:break;
 	}
 	ifSleep = 0;
@@ -115,10 +115,10 @@ u8 checkMoto(int v)
 	u8 s = 0;
 	switch(modeCount%4)
 	{
-		case 0: if(v>250&&v<3000)s = 1;break;
-		case 1: if(v>250&&v<3000)s = 1;break;
-		case 2: if(v>250&&v<3000)s = 1;break;
-		case 3: if(v>250&&v<3000)s = 1;break;
+		case 0: if(v>280&&v<3000)s = 1;break;
+		case 1: if(v>300&&v<3000)s = 1;break;
+		case 2: if(v>350&&v<3000)s = 1;break;
+		case 3: if(v>350&&v<3000)s = 1;break;
 		default:break;
 	}
 	return s;

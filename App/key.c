@@ -24,7 +24,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == GPIO_PIN_0)
   {
-		HAL_Delay(5);
+		HAL_Delay(10);
 		int i =0;
     if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET)
 		{
