@@ -105,6 +105,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     if(htim==(&htim21))
     {
-        printf("timer\r\n");
+        //printf("timer\r\n");
     }
 }

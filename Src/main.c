@@ -35,17 +35,16 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  MX_USART2_UART_Init();
+  //MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
 	__HAL_RCC_PWR_CLK_ENABLE();
  
-	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
+	//printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
 	feedDog();
 	MX_IWDG_Init();
-	//MX_TIM21_Init();
-
+	//MX_TIM21_Init();   `	
   while (1)
   {
 		feedDog();

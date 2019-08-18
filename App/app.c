@@ -50,7 +50,7 @@ void modeChange()
 	}
 	ifSleep = 0;
 	clearTick();
-	printf("change mode\r\n");
+	//printf("change mode\r\n");
 }
 
 void appPause()
@@ -58,7 +58,7 @@ void appPause()
 	ifPause = 1;
 	ifSleep = 0;
 	TIM_Set(PMP);
-	printf("pause\r\n");
+	//printf("pause\r\n");
 }
 void appContuine()
 {
@@ -92,7 +92,7 @@ void sleep()
 	TIM_Set(PMP);
 	ledMode(0,0,0,0);
 	ledChargeOff();
-	printf("sleep\r\n");
+	//printf("sleep\r\n");
 	ifSleep = 1;
 }
 u8 ifMode4()
