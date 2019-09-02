@@ -13,22 +13,28 @@
 
 #define BatLow 3600
 #define MotoHigh 1000
-#define Dura 500
-#define CloseTime (1000/Dura)*60*2
+#define Dura 50
+#define CloseTime (1000/Dura)*60*2*10
 
-#define P1S (1000/Dura)*29
-#define P1D (1000/Dura)*30
+#define P1S (1000/Dura)*29*10
+#define P1D (1000/Dura)*30*10
 
-#define P2S (1000/Dura)*59
-#define P2D (1000/Dura)*60
+#define P2S (1000/Dura)*59*10
+#define P2D (1000/Dura)*60*10
 
-#define P3S (1000/Dura)*89
-#define P3D (1000/Dura)*90
+#define P3S (1000/Dura)*89*10
+#define P3D (1000/Dura)*90*10
 
-#define P4S (1000/Dura)*119
-#define P4D (1000/Dura)*120
+#define P4S (1000/Dura)*119*10
+#define P4D (1000/Dura)*120*10
 
 
+
+int mspeed;
+u16 b;
+int charge;
+int status;
+		
 int main(void)
 {
   HAL_Init();
@@ -48,11 +54,19 @@ int main(void)
   while (1)
   {
 		feedDog();
-		int mspeed = getMotor();
-	  HAL_Delay(250);
-		u16 b = getBattery();
-		int charge = getIn();
-		int status = getOnOff();		
+		HAL_Delay(Dura);
+		Tick();
+		long time = getTick();
+		if(time%5==0&&(time%10!=0))
+		{
+				mspeed = getMotor();
+				charge = getIn();
+				status = getOnOff();
+		}			
+		if(time%5!=0&&(time%10==0))
+		{
+		  	b = getBattery();
+		}
 		//printf("charge %d Bat %d Status %d speed %d\r\n",charge,b,status,mspeed);
 		if((charge == 0)&&b<BatLow)
 		{
@@ -61,7 +75,7 @@ int main(void)
 				BatWarn();
 			}
 		}
-	  if(getIn()==1)
+	  if(charge==1)
 		{
 			sleep();
 		}
@@ -69,10 +83,6 @@ int main(void)
 		{
 			sleep();
 		}
-		
-		HAL_Delay(Dura-250);
-		Tick();
-    long time = getTick();
 		if(ifMode4()==0)
 		{
 			if((time>=P1S)&&(time<=P1D))
@@ -99,7 +109,16 @@ int main(void)
 			{
 				appContuine();
 			} 
-	  }
+	  }else if((ifMode4()==1)&&(time<P4S))
+		{
+			if(time%(1000/Dura)<=18)
+			{
+				appContuine();
+			}else
+			{
+				appPause();
+			}
+		}
 		if(time>P4S)
 		{
 			sleep();
