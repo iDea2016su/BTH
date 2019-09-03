@@ -16,17 +16,17 @@
 #define Dura 500
 #define CloseTime (1000/Dura)*60*2
 
-#define P1S (1000/Dura)*29
-#define P1D (1000/Dura)*30
+#define P1S (1000/Dura)*29*5
+#define P1D (1000/Dura)*30*5
 
-#define P2S (1000/Dura)*59
-#define P2D (1000/Dura)*60
+#define P2S (1000/Dura)*59*5
+#define P2D (1000/Dura)*60*5
 
-#define P3S (1000/Dura)*89
-#define P3D (1000/Dura)*90
+#define P3S (1000/Dura)*89*5
+#define P3D (1000/Dura)*90*5
 
-#define P4S (1000/Dura)*119
-#define P4D (1000/Dura)*120
+#define P4S (1000/Dura)*119*5
+#define P4D (1000/Dura)*120*5
 
 
 int main(void)
@@ -35,7 +35,7 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  //MX_USART2_UART_Init();
+  MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
@@ -49,7 +49,7 @@ int main(void)
   {
 		feedDog();
 		int mspeed = getMotor();
-	  HAL_Delay(250);
+	  HAL_Delay(50);
 		u16 b = getBattery();
 		int charge = getIn();
 		int status = getOnOff();		
@@ -70,35 +70,50 @@ int main(void)
 			sleep();
 		}
 		
-		HAL_Delay(Dura-250);
+		HAL_Delay(50);
 		Tick();
     long time = getTick();
-		if(ifMode4()==0)
+		if(status == 0)
 		{
-			if((time>=P1S)&&(time<=P1D))
+			if(ifMode4()==0)
 			{
-				appPause();
+				if((time>=P1S)&&(time<=P1D))
+				{
+					appPause();
+				}
+				else if((time>=P1D)&&(time<=P2S))
+				{
+					appContuine();
+				}
+				else if((time>=P2S)&&(time<=P2D))
+				{
+					appPause();
+				}
+				else if((time>=P2D)&&(time<=P3S))
+				{
+					appContuine();
+				}
+				else if((time>=P3S)&&(time<=P3D))
+				{
+					appPause();
+				}
+				else if((time>=P3D)&&(time<=P4S))
+				{
+					appContuine();
+				} 
 			}
-			else if((time>=P1D)&&(time<=P2S))
+			if((ifMode4()==1)&&(time<P4S))
 			{
-				appContuine();
+				printf("mode 4 time %d\r\n",(int)time);
+				if(time%20==5||time%20==10||time%20==15||time%20==0)
+				{
+					appPause();
+				}
+				else
+				{
+					appContuine();
+				}
 			}
-			else if((time>=P2S)&&(time<=P2D))
-			{
-				appPause();
-			}
-			else if((time>=P2D)&&(time<=P3S))
-			{
-				appContuine();
-			}
-			else if((time>=P3S)&&(time<=P3D))
-			{
-				appPause();
-			}
-			else if((time>=P3D)&&(time<=P4S))
-			{
-				appContuine();
-			} 
 	  }
 		if(time>P4S)
 		{
