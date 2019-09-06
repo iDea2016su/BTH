@@ -119,7 +119,7 @@ u8 checkMoto(int v)
 	u8 s = 0;
 	switch(modeCount%4)
 	{
-		case 0: if(v>500&&v<3000)s = 1;break;
+		case 0: if(v>550&&v<3000)s = 1;break;
 		case 1: if(v>600&&v<3000)s = 1;break;
 		case 2: if(v>600&&v<3000)s = 1;break;
 		case 3: if(v>600&&v<3000)s = 1;break;
