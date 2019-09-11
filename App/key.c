@@ -33,12 +33,13 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 				i++;
 				HAL_Delay(5);
 				feedDog();
-				if(i>=200)
+				if(i>=100)
 				{
 					break;
 				}
+				//printf("%d\r\n",i);
 			}
-			if(i<200)
+			if(i<100)
 			{
 				if(getIn()==0)
 				modeChange();

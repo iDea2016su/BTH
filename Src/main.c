@@ -35,7 +35,7 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  MX_USART2_UART_Init();
+  //MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
@@ -102,9 +102,9 @@ int main(void)
 					appContuine();
 				} 
 			}
-			if((ifMode4()==1)&&(time<P4S))
+			if((getOnOff()==0)&&(ifMode4()==1)&&(time<P4S))
 			{
-				printf("mode 4 time %d\r\n",(int)time);
+				//printf("mode 4 time %d\r\n",(int)time);
 				if(time%20==5||time%20==10||time%20==15||time%20==0)
 				{
 					appPause();
@@ -115,6 +115,10 @@ int main(void)
 				}
 			}
 	  }
+		if(getOnOff()==1)
+		{
+			sleep();
+		}
 		if(time>P4S)
 		{
 			sleep();
