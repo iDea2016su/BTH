@@ -5,6 +5,7 @@
 #include "input.h"
 #include "dog.h"
 
+extern int batteryValue;
 void KEY_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};

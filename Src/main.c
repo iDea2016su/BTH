@@ -11,7 +11,7 @@
 #include "app.h"
 #include "dog.h"
 
-#define BatLow 3600
+
 #define MotoHigh 1000
 #define Dura 500
 #define CloseTime (1000/Dura)*60*2
@@ -28,6 +28,7 @@
 #define P4S (1000/Dura)*119*5
 #define P4D (1000/Dura)*120*5
 
+int batteryValue = 8000;
 
 int main(void)
 {
@@ -35,7 +36,7 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  //MX_USART2_UART_Init();
+  MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
@@ -50,11 +51,11 @@ int main(void)
 		feedDog();
 		int mspeed = getMotor();
 	  HAL_Delay(50);
-		u16 b = getBattery();
+		batteryValue = getBattery();
 		int charge = getIn();
 		int status = getOnOff();		
-		//printf("charge %d Bat %d Status %d speed %d\r\n",charge,b,status,mspeed);
-		if((charge == 0)&&b<BatLow)
+		printf("Bat %d\r\n",batteryValue);
+		if((charge == 0)&&batteryValue<BatLow+30)
 		{
 			if(status==0)
 			{
