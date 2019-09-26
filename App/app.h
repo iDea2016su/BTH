@@ -3,7 +3,7 @@
 #include "sys.h"
 
 
-#define BatLow 4000
+#define BatLow 3960
 
 void modeChange();
 void appPause();

@@ -36,7 +36,7 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  MX_USART2_UART_Init();
+  //MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
@@ -54,8 +54,8 @@ int main(void)
 		batteryValue = getBattery();
 		int charge = getIn();
 		int status = getOnOff();		
-		printf("Bat %d\r\n",batteryValue);
-		if((charge == 0)&&batteryValue<BatLow+30)
+		//printf("Bat %d\r\n",batteryValue);
+		if((charge == 0)&&batteryValue<BatLow)
 		{
 			if(status==0)
 			{

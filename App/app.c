@@ -34,7 +34,7 @@ void modeChange()
 	if(ifRun)
 	{
 		modeCount++;
-		if(batteryValue<=BatLow-20)
+		if(batteryValue<=BatLow)
 		{
 			switch(modeCount%4)
 			{
@@ -45,7 +45,7 @@ void modeChange()
 				default:break;
 			}
 		}
-		else if(batteryValue>BatLow+20)
+		else if(batteryValue>BatLow)
 		{
 			switch(modeCount%4)
 			{
@@ -76,7 +76,7 @@ void appPause()
 }
 void appContuine()
 {
-	if(batteryValue>=BatLow+20)
+	if(batteryValue>=BatLow)
 	{
 		switch(modeCount%4)
 		{
@@ -87,7 +87,7 @@ void appContuine()
 			default:break;
 		}
 	}
-	else if(batteryValue<BatLow-20)
+	else if(batteryValue<BatLow)
 	{
 		switch(modeCount%4)
 		{
