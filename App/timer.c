@@ -46,6 +46,12 @@ void TIM2_Init(u16 psc,u16 arr)
   HAL_TIM_MspPostInit(&htim2);
 	TIM_Set(0);
 }
+void PWM_CLOSE()
+{
+	TIM_Set(0);
+	HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_2);
+	HAL_TIM_PWM_Stop_IT(&htim2, TIM_CHANNEL_2);
+}
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim)
 {
     GPIO_InitTypeDef GPIO_Initure;
