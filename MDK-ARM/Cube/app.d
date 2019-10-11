@@ -41,3 +41,4 @@ cube\app.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 cube\app.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_wwdg.h
 cube\app.o: ..\App\timer.h
 cube\app.o: ..\App\led.h
+cube\app.o: ..\App\adc.h

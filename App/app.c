@@ -1,6 +1,7 @@
 #include "app.h"
 #include "timer.h"
 #include "led.h"
+#include "adc.h"
 
 
 #define PM1 750
@@ -28,13 +29,12 @@ u8 ifRun   = 0;
 long sysTick = 0;
 u8 ifSleep = 1;
 
-extern int batteryValue;
 void modeChange()
 {
 	if(ifRun)
 	{
 		modeCount++;
-		if(batteryValue<=BatLow)
+		if(getBatStaus()==1)
 		{
 			switch(modeCount%4)
 			{
@@ -45,7 +45,7 @@ void modeChange()
 				default:break;
 			}
 		}
-		else if(batteryValue>BatLow)
+		else if(getBatStaus()==0)
 		{
 			switch(modeCount%4)
 			{
@@ -76,7 +76,7 @@ void appPause()
 }
 void appContuine()
 {
-	if(batteryValue>=BatLow)
+	if(getBatStaus()==0)
 	{
 		switch(modeCount%4)
 		{
@@ -87,7 +87,7 @@ void appContuine()
 			default:break;
 		}
 	}
-	else if(batteryValue<BatLow)
+	else if(getBatStaus()==1)
 	{
 		switch(modeCount%4)
 		{
@@ -150,4 +150,31 @@ u8 checkMoto(int v)
 		default:break;
 	}
 	return s;
+}
+
+//0:ok
+//1:no power
+static int powerStatus = 0;
+int getBatStaus()
+{
+	int temp = 0;
+	if(getOnOff())
+	{
+	 temp = getBattery();
+	 if(temp<BatLow&&temp>3600)
+	 {
+		 powerStatus = 0;
+		 return 0;
+	 }
+	 else
+	 {
+		 powerStatus = 1;
+		 return 1;
+	 }
+	}else if(powerStatus == 0)
+	{
+		return 0;
+	}
+	else
+	return 1;
 }

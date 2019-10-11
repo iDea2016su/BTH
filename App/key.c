@@ -46,7 +46,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 				{
 					modeChange();
 				}
-				printf("get in %d\r\n",getIn());
+				//printf("get in %d\r\n",getIn());
 			}
 			else
 			{

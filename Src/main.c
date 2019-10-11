@@ -44,7 +44,7 @@ int main(void)
 	IN_Init();
 	//@__HAL_RCC_PWR_CLK_ENABLE();
  
-	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
+	//printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
 	feedDog();
 	MX_IWDG_Init();
 	//MX_TIM21_Init();   `	
@@ -54,11 +54,10 @@ int main(void)
 		feedDog();
 		int mspeed = getMotor();
 	  HAL_Delay(50);
-		batteryValue = getBattery();
 		charge = getIn();
 		int status = getOnOff();		
-		printf("Bat %d in %d\r\n",batteryValue,charge);
-		if((charge == 0)&&batteryValue<BatLow)
+		//printf("Bat %d in %d\r\n",batteryValue,charge);
+		if((charge == 0)&&getBatStaus())
 		{
 			if(status==0)
 			{
