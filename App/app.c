@@ -64,7 +64,7 @@ void modeChange()
 	}
 	ifSleep = 0;
 	clearTick();
-	//printf("change mode\r\n");
+	printf("change mode\r\n");
 }
 
 void appPause()

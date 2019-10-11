@@ -29,6 +29,8 @@
 #define P4D (1000/Dura)*120*5
 
 int batteryValue = 8000;
+volatile int charge;
+int inCount = 0;
 
 int main(void)
 {
@@ -36,25 +38,26 @@ int main(void)
   SystemClock_Config();
   LED_Init();
   ADC_Init();
-  //MX_USART2_UART_Init();
+  MX_USART2_UART_Init();
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
-	__HAL_RCC_PWR_CLK_ENABLE();
+	//@__HAL_RCC_PWR_CLK_ENABLE();
  
-	//printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
+	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
 	feedDog();
 	MX_IWDG_Init();
 	//MX_TIM21_Init();   `	
   while (1)
   {
+		inCount ++;
 		feedDog();
 		int mspeed = getMotor();
 	  HAL_Delay(50);
 		batteryValue = getBattery();
-		int charge = getIn();
+		charge = getIn();
 		int status = getOnOff();		
-		//printf("Bat %d\r\n",batteryValue);
+		printf("Bat %d in %d\r\n",batteryValue,charge);
 		if((charge == 0)&&batteryValue<BatLow)
 		{
 			if(status==0)
@@ -62,7 +65,7 @@ int main(void)
 				BatWarn();
 			}
 		}
-	  if(getIn()==1)
+	  if(charge==1)
 		{
 			sleep();
 		}
