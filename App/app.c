@@ -65,6 +65,7 @@ void modeChange()
 	ifSleep = 0;
 	clearTick();
 	printf("change mode\r\n");
+	HAL_Delay(200);
 }
 
 void appPause()
@@ -155,13 +156,14 @@ u8 checkMoto(int v)
 //0:ok
 //1:no power
 static int powerStatus = 0;
+int temp = 0;
 int getBatStaus()
 {
-	int temp = 0;
 	if(getOnOff())
 	{
 	 temp = getBattery();
-	 if(temp<BatLow&&temp>3600)
+	 printf("%d\r\n",temp);
+	 if(temp<BatLow&&temp>2500)
 	 {
 		 powerStatus = 0;
 		 return 0;

@@ -6,7 +6,7 @@ static float A = 1;
 static float C = 1;        
 static float X_pre = 0; 
 static float P_pre = 0;
-static float Xkf_k1 = 0;
+static float Xkf_k1 = 3000;
 static float P_k1 = 1;
 static float Kg = 0;
 

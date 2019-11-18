@@ -26,7 +26,7 @@ void ADC_Init(void)
   hadc.Init.SamplingTime = ADC_SAMPLETIME_7CYCLES_5;
   hadc.Init.ScanConvMode = ADC_SCAN_DIRECTION_FORWARD;
   hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-  hadc.Init.ContinuousConvMode = ENABLE;
+  hadc.Init.ContinuousConvMode = DISABLE;
   hadc.Init.DiscontinuousConvMode = DISABLE;
   hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
   hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
@@ -42,12 +42,12 @@ void ADC_Init(void)
   }
   /** Configure for the selected ADC regular channel to be converted. 
   */
-  sConfig.Channel = ADC_CHANNEL_3;
-  sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
-  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
+//  sConfig.Channel = ADC_CHANNEL_3;
+//  sConfig.Rank = ADC_RANK_CHANNEL_NUMBER;
+//  if (HAL_ADC_ConfigChannel(&hadc, &sConfig) != HAL_OK)
+//  {
+//    Error_Handler();
+//  }
   /** Configure for the selected ADC regular channel to be converted. 
   */
   sConfig.Channel = ADC_CHANNEL_4;
@@ -68,18 +68,20 @@ u16 getBattery()
 	ADC1_ChanConf.Rank=ADC_RANK_CHANNEL_NUMBER;   	
 	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
 	HAL_ADC_Start(&hadc);                               //开启ADC
-	HAL_ADC_PollForConversion(&hadc,100);                //轮询转换
+	HAL_ADC_PollForConversion(&hadc,300);                //轮询转换
 	return (u16)filter((u16)HAL_ADC_GetValue(&hadc));	            //返回最近一次ADC1规则组的转换结果
 	//return (u16)HAL_ADC_GetValue(&hadc);
 }
 
 u16 getMotor()   
 {
-	ADC_ChannelConfTypeDef ADC1_ChanConf;
-	ADC1_ChanConf.Channel=ADC_CHANNEL_3;                                  
-	ADC1_ChanConf.Rank=ADC_RANK_CHANNEL_NUMBER;   	
-	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
-	HAL_ADC_Start(&hadc);                               //开启ADC
-	HAL_ADC_PollForConversion(&hadc,100);                //轮询转换
-	return (u16)HAL_ADC_GetValue(&hadc);	            //返回最近一次ADC1规则组的转换结果
+//	ADC_ChannelConfTypeDef ADC1_ChanConf;
+//	ADC1_ChanConf.Channel=ADC_CHANNEL_3;                                  
+//	ADC1_ChanConf.Rank=ADC_RANK_CHANNEL_NUMBER;   	
+//	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
+//	HAL_ADC_Start(&hadc);                               //开启ADC
+//	HAL_ADC_PollForConversion(&hadc,300);                //轮询转换
+//	return (u16)HAL_ADC_GetValue(&hadc);	            //返回最近一次ADC1规则组的转换结果
+	
+	return 100;
 }

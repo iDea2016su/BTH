@@ -30,7 +30,8 @@
 
 int batteryValue = 8000;
 volatile int charge;
-int inCount = 0;
+long inCount = 0;
+int mspeed;
 
 int main(void)
 {
@@ -52,18 +53,22 @@ int main(void)
   {
 		inCount ++;
 		feedDog();
-		int mspeed = getMotor();
+		if(inCount%9==0)
+	  mspeed = getMotor();
 	  HAL_Delay(50);
 		charge = getIn();
 		int status = getOnOff();		
 		//printf("Bat %d in %d\r\n",batteryValue,charge);
-		if((charge == 0)&&getBatStaus())
+		if(inCount%9==0)
 		{
-			if(status==0)
+			if((charge == 0)&&getBatStaus())
 			{
-				BatWarn();
+				if(status==0)
+				{
+					BatWarn();
+				}
 			}
-		}
+	  }
 	  if(charge==1)
 		{
 			sleep();
