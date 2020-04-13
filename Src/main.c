@@ -31,6 +31,7 @@
 int batteryValue = 8000;
 volatile int charge;
 int inCount = 0;
+void EnterStop();
 
 int main(void)
 {
@@ -42,16 +43,14 @@ int main(void)
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
-	//@__HAL_RCC_PWR_CLK_ENABLE();
- 
 	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
-	feedDog();
-	MX_IWDG_Init();
+	//feedDog();
+	//MX_IWDG_Init();
 	//MX_TIM21_Init();   `	
   while (1)
   {
 		inCount ++;
-		feedDog();
+		//feedDog();
 		int mspeed = getMotor();
 	  HAL_Delay(50);
 		batteryValue = getBattery();
@@ -126,6 +125,56 @@ int main(void)
 		if(time>P4S)
 		{
 			sleep();
+			EnterStop();
 		}
   }
+}
+
+void EnterStop()
+{
+	printf("enter stop\r\n");
+	SysTick->CTRL = 0x00;//close tick
+  SysTick->VAL = 0x00;// clear tick
+
+
+	
+	GPIO_InitTypeDef GPIO_InitStructure;
+  __HAL_RCC_PWR_CLK_ENABLE();
+  HAL_PWREx_EnableUltraLowPower();
+  HAL_PWREx_EnableFastWakeUp();
+  __HAL_RCC_WAKEUPSTOP_CLK_CONFIG(RCC_STOP_WAKEUPCLOCK_HSI);
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  GPIO_InitStructure.Pin = GPIO_PIN_All;
+  GPIO_InitStructure.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStructure.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStructure); 
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
+  __HAL_RCC_GPIOA_CLK_DISABLE();
+  __HAL_RCC_GPIOB_CLK_DISABLE();
+  __HAL_RCC_GPIOC_CLK_DISABLE();
+	
+	__HAL_RCC_TIM2_CLK_DISABLE();
+	
+	
+	KEY_Init();
+  //enter STOP without RTC
+  __HAL_RCC_PWR_CLK_ENABLE();  
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+	
+	//weak up
+	HAL_Init();
+  SystemClock_Config();
+  LED_Init();
+  ADC_Init();
+  MX_USART2_UART_Init();
+	TIM2_Init(4800,200);
+	KEY_Init();
+	IN_Init();
+	printf("weakup\r\n");
+	//feedDog();
+	//MX_IWDG_Init();
+
 }

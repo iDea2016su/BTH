@@ -21,6 +21,7 @@ void KEY_Init(void)
   HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 }
 
+
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == GPIO_PIN_0)
@@ -33,7 +34,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 			{
 				i++;
 				HAL_Delay(5);
-				feedDog();
+				//feedDog();
 				if(i>=100)
 				{
 					break;
