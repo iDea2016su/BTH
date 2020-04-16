@@ -387,7 +387,7 @@ ARM Macro Assembler    Page 6
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M0+ --apcs=inter
 work --depend=cube\startup_stm32l010x4.d -ocube\startup_stm32l010x4.o -I.\RTE\_
-Cube -IC:\Users\hkzju\AppData\Local\Arm\Packs\ARM\CMSIS\5.5.1\CMSIS\Core\Includ
+Cube -IC:\Users\hkzju\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\CMSIS\Core\Includ
 
 
 
@@ -396,7 +396,7 @@ ARM Macro Assembler    Page 7
 
 e -IC:\Users\hkzju\AppData\Local\Arm\Packs\Keil\STM32L0xx_DFP\2.0.1\Drivers\CMS
 IS\Device\ST\STM32L0xx\Include --predefine="__MICROLIB SETA 1" --predefine="__U
-VISION_VERSION SETA 528" --predefine="_RTE_ SETA 1" --predefine="STM32L010x4 SE
+VISION_VERSION SETA 529" --predefine="_RTE_ SETA 1" --predefine="STM32L010x4 SE
 TA 1" --list=startup_stm32l010x4.lst startup_stm32l010x4.s
 
 

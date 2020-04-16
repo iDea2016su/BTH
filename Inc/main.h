@@ -63,6 +63,7 @@ void Error_Handler(void);
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
+void EnterStop();
 
 #ifdef __cplusplus
 }

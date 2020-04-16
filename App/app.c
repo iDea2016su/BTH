@@ -2,6 +2,7 @@
 #include "timer.h"
 #include "led.h"
 #include "adc.h"
+#include "main.h"
 
 
 #define PM1 750
@@ -49,10 +50,10 @@ void modeChange()
 		{
 			switch(modeCount%4)
 			{
-				case 0: appState = APP_MODE1;ledMode(1,0,0,0);TIM_Set(PM1/20);HAL_Delay(10);TIM_Set(PM1/10);HAL_Delay(20);TIM_Set(PM1/5);HAL_Delay(5);TIM_Set(PM1/2);HAL_Delay(5);TIM_Set(PM1);break;
-				case 1: appState = APP_MODE2;ledMode(0,1,0,0);TIM_Set(PM2/20);HAL_Delay(10);TIM_Set(PM2/10);HAL_Delay(20);TIM_Set(PM2/5);HAL_Delay(5);TIM_Set(PM2/2);HAL_Delay(5);TIM_Set(PM2);break;
-				case 2: appState = APP_MODE3;ledMode(0,0,1,0);TIM_Set(PM3/20);HAL_Delay(10);TIM_Set(PM3/10);HAL_Delay(20);TIM_Set(PM3/5);HAL_Delay(5);TIM_Set(PM3/2);HAL_Delay(5);TIM_Set(PM3);break;
-				case 3: appState = APP_MODE4;ledMode(0,0,0,1);TIM_Set(PM4/20);HAL_Delay(10);TIM_Set(PM4/10);HAL_Delay(20);TIM_Set(PM4/5);HAL_Delay(5);TIM_Set(PM4/2);HAL_Delay(5);TIM_Set(PM4);break;
+				case 0: appState = APP_MODE1;ledMode(1,0,0,0);TIM_Set(PM1/20);delay(10);TIM_Set(PM1/10);delay(20);TIM_Set(PM1/5);delay(5);TIM_Set(PM1/2);delay(5);TIM_Set(PM1);break;
+				case 1: appState = APP_MODE2;ledMode(0,1,0,0);TIM_Set(PM2/20);delay(10);TIM_Set(PM2/10);delay(20);TIM_Set(PM2/5);delay(5);TIM_Set(PM2/2);delay(5);TIM_Set(PM2);break;
+				case 2: appState = APP_MODE3;ledMode(0,0,1,0);TIM_Set(PM3/20);delay(10);TIM_Set(PM3/10);delay(20);TIM_Set(PM3/5);delay(5);TIM_Set(PM3/2);delay(5);TIM_Set(PM3);break;
+				case 3: appState = APP_MODE4;ledMode(0,0,0,1);TIM_Set(PM4/20);delay(10);TIM_Set(PM4/10);delay(20);TIM_Set(PM4/5);delay(5);TIM_Set(PM4/2);delay(5);TIM_Set(PM4);break;
 				default:break;
 			}
 		}
@@ -65,7 +66,7 @@ void modeChange()
 	ifSleep = 0;
 	clearTick();
 	printf("change mode\r\n");
-	HAL_Delay(200);
+	delay(200);
 }
 
 void appPause()
@@ -123,6 +124,7 @@ void sleep()
 	ledChargeOff();
 	//printf("sleep\r\n");
 	ifSleep = 1;
+	//EnterStop();
 }
 u8 ifMode4()
 {

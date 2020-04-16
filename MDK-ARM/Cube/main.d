@@ -46,4 +46,3 @@ cube\main.o: ..\App\timer.h
 cube\main.o: ..\App\key.h
 cube\main.o: ..\App\input.h
 cube\main.o: ..\App\app.h
-cube\main.o: ..\Sys\dog.h

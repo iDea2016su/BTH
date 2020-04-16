@@ -35,5 +35,6 @@ typedef __I uint16_t vuc16;
 typedef __I uint8_t vuc8;
 	
 void SystemClock_Config(void);
+void delay(int ms);
 
 #endif

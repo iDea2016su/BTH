@@ -54,3 +54,15 @@ void Error_Handler(void)
 
   /* USER CODE END Error_Handler_Debug */
 }
+
+void delay(int ms)
+{
+	for(int i=0;i<ms;i++)
+	for(int j=0;j<2500;j++)
+	{
+		__nop();
+		__nop();
+		__nop();
+		
+	}
+}

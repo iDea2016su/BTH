@@ -9,8 +9,6 @@
 #include "adc.h"
 #include "input.h"
 #include "app.h"
-#include "dog.h"
-
 
 #define MotoHigh 1000
 #define Dura 500
@@ -31,8 +29,10 @@
 int batteryValue = 8000;
 volatile int charge;
 long inCount = 0;
+void EnterStop();
 int mspeed;
 
+int firstWeakUp = 0;
 int main(void)
 {
   HAL_Init();
@@ -43,24 +43,20 @@ int main(void)
 	TIM2_Init(4800,200);
 	KEY_Init();
 	IN_Init();
-	//@__HAL_RCC_PWR_CLK_ENABLE();
- 
-	//printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
-	feedDog();
-	MX_IWDG_Init();
-	//MX_TIM21_Init();   `	
+	printf("sys start11111111111111111111111111111111111111111111111111111111\r\n");
+	delay(1000);
+	EnterStop();
   while (1)
   {
 		inCount ++;
-		feedDog();
 		if(inCount%9==0)
 	  mspeed = getMotor();
-	  HAL_Delay(50);
+	  delay(50);
 		charge = getIn();
 		int status = getOnOff();		
-		//printf("Bat %d in %d\r\n",batteryValue,charge);
 		if(inCount%9==0)
 		{
+			//printf("Bat %d in %d\r\n",getBatStaus(),charge);
 			if((charge == 0)&&getBatStaus())
 			{
 				if(status==0)
@@ -78,9 +74,9 @@ int main(void)
 			sleep();
 		}
 		
-		HAL_Delay(50);
+		delay(50);
 		Tick();
-    long time = getTick();
+    long time = inCount;
 		if(status == 0)
 		{
 			if(ifMode4()==0)
@@ -130,6 +126,43 @@ int main(void)
 		if(time>P4S)
 		{
 			sleep();
+			EnterStop();
 		}
+		printf("inCount:%d\r\n",time);
   }
+}
+
+void EnterStop()
+{
+	printf("enter stop\r\n");
+	SysTick->CTRL = 0x00;//close tick
+  SysTick->VAL = 0x00;// clear tick
+  
+  HAL_PWREx_EnableUltraLowPower();
+  HAL_PWREx_EnableFastWakeUp();
+  __HAL_RCC_WAKEUPSTOP_CLK_CONFIG(RCC_STOP_WAKEUPCLOCK_HSI);
+	
+	GPIO_InitTypeDef GPIO_InitStructure;
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  GPIO_InitStructure.Pin = GPIO_PIN_All;
+  GPIO_InitStructure.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStructure.Pull = GPIO_NOPULL;
+  //HAL_GPIO_Init(GPIOA, &GPIO_InitStructure); 
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStructure);
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStructure);
+  //__HAL_RCC_GPIOA_CLK_DISABLE();
+  __HAL_RCC_GPIOB_CLK_DISABLE();
+  __HAL_RCC_GPIOC_CLK_DISABLE();
+	__HAL_RCC_TIM2_CLK_DISABLE();	
+	//congfig weakup pin
+	KEY_Init();
+  //enter STOP without RTC
+	firstWeakUp = 0;
+	inCount = 0;
+	clearTick();
+  HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+	//weak up
+	
 }

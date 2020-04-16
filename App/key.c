@@ -1,11 +1,15 @@
 #include "key.h"
 #include "led.h"
-#include "timer.h"
 #include "app.h"
+#include "usart.h"
+#include "adc.h"
+#include "rtc.h"
+#include "timer.h"
 #include "input.h"
-#include "dog.h"
+#include "sys.h"
 
 extern int batteryValue;
+extern int firstWeakUp;
 void KEY_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
@@ -25,15 +29,28 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   if(GPIO_Pin == GPIO_PIN_0)
   {
-		HAL_Delay(10);
+
 		int i =0;
+		if(firstWeakUp==0)
+		{
+			firstWeakUp = 1;
+			HAL_Init();
+      SystemClock_Config();
+      LED_Init();
+      ADC_Init();
+      MX_USART2_UART_Init();
+	    TIM2_Init(4800,200);
+	    //KEY_Init();
+	    IN_Init();
+	    printf("weakup\r\n");
+		}
+		delay(10);
     if(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET)
 		{
 			while(HAL_GPIO_ReadPin(GPIOA,GPIO_PIN_0)==GPIO_PIN_RESET)
 			{
 				i++;
-				HAL_Delay(5);
-				feedDog();
+				delay(5);
 				if(i>=100)
 				{
 					break;
