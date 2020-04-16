@@ -9,6 +9,18 @@ void TIM2_Init(u16 psc,u16 arr)
    /* USER CODE BEGIN TIM2_Init 0 */
 
   /* USER CODE END TIM2_Init 0 */
+	
+	    GPIO_InitTypeDef GPIO_Initure;
+	  __HAL_RCC_TIM2_CLK_ENABLE();			 
+    __HAL_RCC_GPIOA_CLK_ENABLE();			 
+	
+    GPIO_Initure.Pin=GPIO_PIN_1;          
+    GPIO_Initure.Mode=GPIO_MODE_AF_PP;  	   
+    GPIO_Initure.Pull=GPIO_PULLUP;         
+    GPIO_Initure.Speed=GPIO_SPEED_FREQ_VERY_HIGH;     
+	  GPIO_Initure.Alternate=GPIO_AF2_TIM2;	 
+    HAL_GPIO_Init(GPIOA,&GPIO_Initure);
+	
 
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};

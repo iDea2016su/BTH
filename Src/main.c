@@ -128,7 +128,7 @@ int main(void)
 			sleep();
 			EnterStop();
 		}
-		printf("inCount:%d\r\n",time);
+		//printf("inCount:%d\r\n",time);
   }
 }
 

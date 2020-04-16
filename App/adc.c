@@ -69,8 +69,8 @@ u16 getBattery()
 	HAL_ADC_ConfigChannel(&hadc,&ADC1_ChanConf);        //通道配置
 	HAL_ADC_Start(&hadc);                               //开启ADC
 	HAL_ADC_PollForConversion(&hadc,300);                //轮询转换
-	return (u16)filter((u16)HAL_ADC_GetValue(&hadc));	            //返回最近一次ADC1规则组的转换结果
-	//return (u16)HAL_ADC_GetValue(&hadc);
+	//return (u16)filter((u16)HAL_ADC_GetValue(&hadc));	            //返回最近一次ADC1规则组的转换结果
+	return (u16)HAL_ADC_GetValue(&hadc);
 }
 
 u16 getMotor()   

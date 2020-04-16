@@ -38,7 +38,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
       SystemClock_Config();
       LED_Init();
       ADC_Init();
-      MX_USART2_UART_Init();
+      //MX_USART2_UART_Init();
 	    TIM2_Init(4800,200);
 	    //KEY_Init();
 	    IN_Init();
